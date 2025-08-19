@@ -1,0 +1,29 @@
+package com.day1to10;
+
+public class DuplicateLettersInString {
+
+	public static void main(String[] args) {
+		String s="Welcome world";
+		for(int i=0;i<=s.length()-1;i++) {
+			char ch=s.toLowerCase().charAt(i);
+			boolean alreadyPresent=false;
+			for(int j=0;j<i;j++) {
+				if(s.charAt(j)==ch) {
+					alreadyPresent=true;
+					break;
+				}
+			}
+			if(!alreadyPresent&&ch>='a'&&ch<='z') {
+				int count=0;
+				for(int k=0;k<=s.length()-1;k++) {
+					if(s.charAt(k)==ch) {
+						count++;
+					}
+				}
+				if(count>1) {
+					System.out.println(ch);
+				}
+			}
+		}
+	}
+}
