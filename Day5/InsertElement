@@ -1,0 +1,30 @@
+package com.day1to10;
+
+public class Day5InsertElement {
+
+	public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40};
+        int x = 25;
+        int y = 2; // index where we want to insert
+
+        int[] newArr = new int[arr.length + 1];
+
+        // Copy elements before index y
+        for (int i = 0; i < y; i++) {
+            newArr[i] = arr[i];
+        }
+
+        // Insert new element
+        newArr[y] = x;
+
+        // Copy the rest
+        for (int i = y; i < arr.length; i++) {
+            newArr[i + 1] = arr[i];
+        }
+
+        System.out.print("After insertion: ");
+        for (int val : newArr) {
+            System.out.print(val + " ");
+        }
+    }
+}
