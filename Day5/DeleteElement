@@ -1,0 +1,24 @@
+package com.day1to10;
+
+public class Day5DeleteElement {
+
+	 public static void main(String[] args) {
+	        int[] arr = {10, 20, 30, 40, 50};
+	        int indexToDelete = 2; // delete element at index 2
+
+	        int[] newArr = new int[arr.length - 1];
+
+	        for (int i = 0, j = 0; i < arr.length; i++) {
+	            if (i == indexToDelete) {
+	                continue; // skip the element at the index to delete
+	            }
+	            newArr[j] = arr[i];
+	            j++;
+	        }
+
+	        System.out.print("After deletion: ");
+	        for (int val : newArr) {
+	            System.out.print(val + " ");
+	        }
+	    }
+}
