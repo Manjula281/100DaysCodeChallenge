@@ -1,0 +1,27 @@
+package com.day1to10;
+
+public class Day5LeftRotation {
+
+	 public static void main(String[] args) {
+	        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	        int n = 3; // number of rotations
+
+	        int len = arr.length;
+	        n = n % len;  // in case rotations > length
+
+	        for (int r = 0; r < n; r++) {
+	            int first = arr[0]; // store first element
+
+	            for (int i = 0; i < len - 1; i++) {
+	                arr[i] = arr[i + 1]; // shift left
+	            }
+
+	            arr[len - 1] = first; // put first element at the end
+	        }
+
+	        System.out.print("After left rotation: ");
+	        for (int val : arr) {
+	            System.out.print(val + " ");
+	        }
+	    }
+}
