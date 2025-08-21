@@ -1,0 +1,154 @@
+package com.day1to10;
+
+class Node{
+	int val;
+	Node next;
+	
+	public Node(int val){
+		this.val=val;
+		this.next=null;
+		
+	}
+}
+
+public class DeleteNthNodeFromLastSLL {
+	
+	private Node root;
+	public deleteNode() {
+		this.root=null;
+	}
+	
+	public void insertNode(int val) {
+		Node n=new Node(val);
+		
+		if(this.root==null)
+		{
+			this.root=n;
+			return;
+		}
+		Node temp=this.root;
+		while(temp.next!=null)
+		{
+			temp=temp.next;
+		}
+		temp.next=n;
+	}
+
+	public void display(){
+		
+		Node temp=this.root;
+		while(temp!=null)
+		{
+			System.out.print(temp.val);
+			if(temp.next!=null)
+			{
+				System.out.print("->");
+			}
+			temp=temp.next;
+		}
+		
+	}
+	
+//	public void deleteNthNode(int target) {
+//		Node just=null;
+//		Node cur=just;
+//		Node prev=just;
+////		int target=20;
+//		Node temp = null;
+//		if(this.root!=null)
+//		{
+//			cur=this.root;
+//			return;
+//		}
+//		while(cur.val!=target)
+//			
+//		{
+//			cur=cur.next;
+//			prev.next=cur;
+//			cur=cur.next;
+//			
+//		}
+//		prev.next=cur.next;
+//		
+//	}
+	public void deleteNthNodeFromStart(int n) {
+	    if (n <= 0 || root == null) {
+	        return; // invalid position or empty list
+	    }
+
+	    Node dummy = new Node(0); // dummy node before head
+	    dummy.next = root;
+
+	    Node prev = dummy;
+	    Node curr = root;
+
+	    // Move curr to the n-th node
+	    for (int i = 1; i < n && curr != null; i++) {
+	        prev = curr;
+	        curr = curr.next;
+	    }
+
+	    // If n is larger than the length of the list, do nothing
+	    if (curr == null) {
+	        return;
+	    }
+
+	    // Skip the n-th node
+	    prev.next = curr.next;
+
+	    // Update head in case we deleted the first node
+	    root = dummy.next;
+	}
+	public void deleteNthFromEnd(int n) {
+	    if (n <= 0 || root == null) {
+	        return; // invalid n or empty list
+	    }
+
+	    Node dummy = new Node(0);
+	    dummy.next = root;
+	    Node first = dummy;
+	    Node second = dummy;
+
+	    // Move first ahead by n+1 steps
+	    for (int i = 0; i <= n; i++) {
+	        if (first == null) {
+	            return; // n is larger than list length
+	        }
+	        first = first.next;
+	    }
+
+	    // Move both until first reaches the end
+	    while (first != null) {
+	        first = first.next;
+	        second = second.next;
+	    }
+
+	    // Delete target node
+	    second.next = second.next.next;
+
+	    // Update head
+	    root = dummy.next;
+	}
+
+	public static void main(String[] args) {
+		
+		deleteNode dn=new deleteNode();
+		
+		dn.insertNode(10);
+		dn.insertNode(20);
+		dn.insertNode(30);
+		dn.insertNode(40);
+		
+		dn.display();
+		System.out.println();
+		
+		dn.deleteNthNodeFromStart(2);
+		dn.deleteNthFromEnd(2);
+		dn.display();
+		
+
+	}
+	
+	
+
+}
