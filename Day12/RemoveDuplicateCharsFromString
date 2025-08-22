@@ -1,0 +1,24 @@
+package com.day12to20;
+
+public class RemoveDuplicateCharsFromString {
+
+	public static void main(String[] args) {
+        String str = "programming";
+        String result = removeDuplicates(str);
+        System.out.println("Original: " + str);
+        System.out.println("Without Duplicates: " + result);
+    }
+
+    public static String removeDuplicates(String str) {
+        boolean[] seen = new boolean[256]; // ASCII chars
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : str.toCharArray()) {
+            if (!seen[c]) {
+                seen[c] = true;
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+}
