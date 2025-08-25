@@ -1,0 +1,45 @@
+package com.day12to20;
+
+class QueueLinkedList {
+    class Node {
+        int data;
+        Node next;
+        Node(int d) { data = d; }
+    }
+
+    Node front, rear;
+
+    // Enqueue
+    void enqueue(int x) {
+        Node newNode = new Node(x);
+        if (rear == null) {
+            front = rear = newNode;
+            return;
+        }
+        rear.next = newNode;
+        rear = newNode;
+    }
+
+    // Dequeue
+    int dequeue() {
+        if (front == null) {
+            System.out.println("Queue Underflow");
+            return -1;
+        }
+        int val = front.data;
+        front = front.next;
+        if (front == null) rear = null;
+        return val;
+    }
+}
+
+public class QueueUsingLinkedList {
+    public static void main(String[] args) {
+        QueueLinkedList q = new QueueLinkedList();
+        q.enqueue(10);
+        q.enqueue(20);
+        q.enqueue(30);
+        System.out.println(q.dequeue());
+        System.out.println(q.dequeue());
+    }
+}
