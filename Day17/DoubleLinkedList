@@ -1,0 +1,112 @@
+package com.day12to20;
+
+class Node{
+    int val;
+    Node prev;
+	Node next;
+	
+	public Node(int val)
+	{
+		this.val=val;
+		this.prev=null;
+		this.next=null;
+	}
+}
+
+public class DoubleLinkedList {
+	
+	private Node root;
+	//private Node tail;
+	
+	public DoubleLinkedList()
+	{
+		this.root=null;
+		//this.tail=null;
+	}
+	
+	public void addNewNode(int val)
+	{
+		Node n=new Node(val);
+		if(root==null)
+		{
+			this.root=n;
+			//this.tail=n;
+			System.out.println("Head node is added to the list");
+			return;
+		}
+		Node temp=root;
+		while(temp.next!=null)
+		{
+			temp=temp.next;
+		}
+		temp.next=n;
+		n.prev=temp;
+//		tail.next=n;
+//		n.prev=tail;
+//		tail=n;
+		System.out.println("New node is appended");
+	}
+	
+//	public void displayReverse()
+//	{
+//		Node temp=tail;
+//		while(temp!=null)
+//		{
+//			System.out.print(temp.val);
+//			
+//			if(temp.prev!=null) {
+//			System.out.print("->");
+//			}
+//			temp=temp.prev;
+//		}
+//	}
+	
+	public void display()
+	{
+		Node temp=root;
+		while(temp!=null)
+		{
+			System.out.print(temp.val);
+			
+			if(temp.next!=null) {
+			System.out.print("->");
+			}
+			temp=temp.next;
+		}
+	}
+//	public void addFront(int val)
+//	{
+//		Node n=new Node(val);
+//		Node temp=null;
+//		temp=this.root;
+//		root=n;
+//		root.next=temp;
+//		temp.prev=root;
+//		
+//		
+//	}
+//	
+	
+	public static void main(String[] args)
+	{
+		
+		
+		DoubleLinkedList dll=new DoubleLinkedList();
+	    dll.addNewNode(10);
+	    dll.addNewNode(20);
+	    dll.addNewNode(30);
+//	    System.out.println("before adding");
+	    dll.display();
+//	    System.out.println();
+//	    
+//	    System.out.println("After adding");
+//	    
+//	    dll.addFront(50);
+//	    
+//	    
+//	    dll.display();
+	}
+	
+	
+
+}
