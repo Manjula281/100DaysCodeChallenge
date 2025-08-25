@@ -1,0 +1,79 @@
+package com.day12to20;
+
+class Node1{
+	int val;
+	Node1 next;
+	
+	public Node1(int val)
+	{
+		this.val=val;
+		this.next=null;
+	}
+}
+public class SingleLinkedList {
+	private Node1 root;
+	
+	public SingleLinkedList()
+	{
+		this.root=null;
+	}
+	
+	public void addNewNode(int val)
+	{
+		Node1 n=new Node1(val);
+		if(this.root==null)
+		{
+			this.root=n;
+			return;
+		}
+		Node1 temp=this.root;
+		while(temp.next!=null)
+		{
+			temp=temp.next;
+		}
+		temp.next=n;
+	}
+	public void display()
+	{
+		
+		if(this.root==null)
+		{
+			System.out.println("List is empty");
+			return;
+		}
+		Node1 temp=this.root;
+		while(temp!=null)
+		{
+			System.out.print(temp.val);
+			if(temp.next!=null)
+				System.out.print("->");
+			temp=temp.next;
+		}
+		System.out.println();
+		
+	}
+	
+	public static void main(String[] args) {
+		SingleLinkedList sll=new SingleLinkedList();
+	    sll.addNewNode(10);
+	    sll.addNewNode(20);
+	    sll.addNewNode(30);
+	    
+//	    System.out.println("Before the front node insertion");
+//	    sll.display();
+//	    sll.addFront(50);
+//	    System.out.println("After the front node insertion");
+	    sll.display();
+	    
+	    
+//	    if(sll.searchVal(90)==true)
+//	    {
+//	    	System.out.println("Search sucessful,element is present");
+//	    }
+//	    else
+//	    {
+//	    	System.out.println("Element not found");
+//	    }
+	}
+
+}
