@@ -1,0 +1,40 @@
+package com.day12to20;
+
+class BST {
+    class Node {
+        int key;
+        Node left, right;
+        Node(int k) { key = k; }
+    }
+
+    Node root;
+
+    // Insert
+    public Node insert(Node root, int key) {
+        if (root == null) return new Node(key);
+        if (key < root.key) root.left = insert(root.left, key);
+        else if (key > root.key) root.right = insert(root.right, key);
+        return root;
+    }
+
+    // Inorder Traversal
+    public void inorder(Node root) {
+        if (root != null) {
+            inorder(root.left);
+            System.out.print(root.key + " ");
+            inorder(root.right);
+        }
+    }
+}
+
+public class BSTree {
+    public static void main(String[] args) {
+        BST tree = new BST();
+        tree.root = tree.insert(tree.root, 50);
+        tree.insert(tree.root, 30);
+        tree.insert(tree.root, 70);
+        tree.insert(tree.root, 20);
+        tree.insert(tree.root, 40);
+        tree.inorder(tree.root);
+    }
+}
